@@ -5,8 +5,8 @@
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  config.ssh.username = "okisanjp"
-  config.ssh.private_key_path = "/Users/okisanjp/.ssh/id_rsa"
+
+  config.vm.hostname = "localvm"
 
   # All Vagrant configuration is done here. The most common configuration
   # options are documented and commented below. For a complete reference,
