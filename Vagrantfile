@@ -95,12 +95,33 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.cookbooks_path = "~/workspace/chef-recipes/berks-cookbooks"
     chef.roles_path = "~/workspace/chef-recipes/roles"
     chef.data_bags_path = "~/workspace/chef-recipes/data_bags"
+    chef.add_recipe "chef-recipes-centos6-japanese-support"
     chef.add_recipe "yum"
     chef.add_recipe "yum-epel"
     chef.add_recipe "chef-recipes-lamp"
+    chef.add_recipe "ruby_build"
+    chef.add_recipe "rbenv::user"
 
     # You may also specify custom JSON attributes:
-    chef.json = {}
+    chef.json = {
+      "rbenv" => {
+        "user_installs" =>
+        [
+            {
+                "user" => "vagrant",
+                "rubies" => ["2.1.3"],
+                "global" => "2.1.3",
+                "gems" =>  {
+                    "2.1.3" =>
+                    [
+                        { "name" => "bundler" },
+                        { "name" => "rails","version" => "~>4.1.0"}
+                    ]
+                }
+            }
+        ]
+      }
+    }
   end
 
   # Enable provisioning with chef server, specifying the chef server URL,
