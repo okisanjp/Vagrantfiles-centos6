@@ -1,1 +1,0 @@
-{"virtualbox":{"/vagrant":{"guestpath":"/vagrant","hostpath":"/Users/okisanjp/vm/centos6","disabled":false},"/var/www":{"guestpath":"/var/www","hostpath":"/Users/okisanjp/workspace","disabled":false}}}
