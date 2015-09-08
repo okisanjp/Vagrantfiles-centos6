@@ -44,7 +44,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
-  config.vm.synced_folder "/Users/okisanjp/workspace", "/var/www/"
+  config.vm.synced_folder "~/workspace", "/var/www/"
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
@@ -93,38 +93,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # path, and data_bags path (all relative to this Vagrantfile), and adding
   # some recipes and/or roles.
   #
-  config.vm.provision "chef_solo" do |chef|
-    chef.cookbooks_path = "~/workspace/chef-recipes/berks-cookbooks"
-    chef.roles_path = "~/workspace/chef-recipes/roles"
-    chef.data_bags_path = "~/workspace/chef-recipes/data_bags"
-    chef.add_recipe "chef-recipes-centos6-japanese-support"
-    chef.add_recipe "yum"
-    chef.add_recipe "yum-epel"
-    chef.add_recipe "chef-recipes-lamp"
-    chef.add_recipe "ruby_build"
-    chef.add_recipe "rbenv::user"
+  # config.vm.provision "chef_solo" do |chef|
 
-    # You may also specify custom JSON attributes:
-    chef.json = {
-      "rbenv" => {
-        "user_installs" =>
-        [
-            {
-                "user" => "vagrant",
-                "rubies" => ["2.1.3"],
-                "global" => "2.1.3",
-                "gems" =>  {
-                    "2.1.3" =>
-                    [
-                        { "name" => "bundler" },
-                        { "name" => "rails","version" => "~>4.1.0"}
-                    ]
-                }
-            }
-        ]
-      }
-    }
-  end
+  # You may also specify custom JSON attributes:
 
   # Enable provisioning with chef server, specifying the chef server URL,
   # and the path to the validation key (relative to this Vagrantfile).
@@ -148,4 +119,4 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # chef-validator, unless you changed the configuration.
   #
   #   chef.validation_client_name = "ORGNAME-validator"
-end
+  # end
